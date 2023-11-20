@@ -1,25 +1,30 @@
 .app-container {
   display: flex;
 }
-.content{
+.content {
   width: 100%;
 }
-.sidebar{
+.sidebar {
   min-height: 800px;
 }
-.post-card{
-  margin : 20px 50px;
+.post-card {
+  margin: 20px 50px;
 }
-.hashtag{
-  margin:0px 5px;
-
+.hashtag {
+  margin: 0px 5px;
 }
-.reactions{
+.reactions {
   width: 100%;
   margin: 15px 0 0 0;
 }
-.create-post{
+.create-post {
   width: 80%;
   margin-top: 50px;
   margin-left: 10%;
+}
+.card-body {
+  margin: 11px;
+}
+.welcome-messege {
+  margin: 100px 0;
 }
