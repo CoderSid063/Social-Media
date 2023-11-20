@@ -41,7 +41,6 @@ const postListReducer = (currPostList, action) => {
     );
   } else if (action.type === "ADD_POST") {
     newPostLIst = [action.payload, ...currPostList];
-    console.log("created");
   }
   return newPostLIst;
 };
@@ -72,7 +71,6 @@ const PostListProvider = ({ children }) => {
         type: "DELETE_POST",
         payload: { postId },
       },
-      console.log(`${postId}`)
     );
   };
 

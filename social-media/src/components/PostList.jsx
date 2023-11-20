@@ -6,9 +6,9 @@ const PostList = () => {
 
   return (
     <>
-      {postList.map((post) => (
+      {postList.map((post) => 
         <Post key={post.id} post ={post} />
-      ))}
+      )}
     </>
   );
 };

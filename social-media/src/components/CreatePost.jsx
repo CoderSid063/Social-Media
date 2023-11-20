@@ -1,26 +1,24 @@
 import { useContext, useRef } from "react";
-import {PostList} from "../store/post-list-store";
+import { PostList } from "../store/post-list-store";
 
 const Createpost = () => {
-  const {addPost} = useContext(PostList)
+  const { addPost } = useContext(PostList);
   const userIdElement = useRef();
   const postTitleElement = useRef();
   const postBodyElement = useRef();
   const reactionsElement = useRef();
   const tagsElement = useRef();
-  
-  const handleSubmit = (event)=> {
 
+  const handleSubmit = (event) => {
     event.preventDefault();
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
     const reactions = reactionsElement.current.value;
-    // const tags = tagsElement.current.split(/(\s+)/);
-    
-    addPost(userId,postTitle,postBody,reactions,tags);
-  }
-  
+    const tags = tagsElement.current.value.split(/(\s+)/);
+
+    addPost(userId, postTitle, postBody, reactions, tags);
+  };
 
   return (
     <form className="create-post" onSubmit={handleSubmit}>
