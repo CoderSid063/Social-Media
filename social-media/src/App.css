@@ -2,7 +2,7 @@
   display: flex;
 }
 .content {
-  width: 100%;
+  width: 100vw;
 }
 .sidebar {
   min-height: 800px;
