@@ -3,36 +3,9 @@ import { createContext, useEffect, useReducer, useState } from "react";
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
-  fetching:false,
+  fetching: false,
   deletePost: () => {},
 });
-
-// const DEFAULT_POST_LIST = [
-//   {
-//     id: "1",
-//     title: "Going to Delhi",
-//     body: "dilfhfj,dhvlfdjv;fdjk;fvmkldfvkfdnkvkldfhvlkf",
-//     reactions: 2,
-//     userId: "user-3",
-//     tags: ["vaction", "Delhi", "Enjoying"],
-//   },
-//   {
-//     id: "2",
-//     title: "Trying hard",
-//     body: "dilfhfj,dhvlfdjv;fdjk;fvmkldfvkfdnkvkldfhvlkf",
-//     reactions: 55,
-//     userId: "user-2",
-//     tags: ["motivation", "Enjoying"],
-//   },
-//   {
-//     id: "3",
-//     title: "Just Do It",
-//     body: "dilfhfj,dhvlfdjv;fdjk;fvmkldfvkfdnkvkldfhvlkf",
-//     reactions: 88,
-//     userId: "user-1",
-//     tags: ["hardwork", "successful"],
-//   },
-// ];
 
 const postListReducer = (currPostList, action) => {
   let newPostLIst = currPostList;
@@ -49,12 +22,7 @@ const postListReducer = (currPostList, action) => {
 };
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    []
-    // DEFAULT_POST_LIST
-  );
-
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
   const [fetching, setFetching] = useState(false);
 
   const addPost = (post) => {
@@ -80,6 +48,7 @@ const PostListProvider = ({ children }) => {
     });
   };
 
+  // fetchiing dummy API
   useEffect(() => {
     setFetching(true);
     const controller = new AbortController();
@@ -96,9 +65,7 @@ const PostListProvider = ({ children }) => {
   }, []);
 
   return (
-    <PostList.Provider
-      value={{ postList,fetching, addPost, deletePost }}
-    >
+    <PostList.Provider value={{ postList, fetching, addPost, deletePost }}>
       {children}
     </PostList.Provider>
   );
