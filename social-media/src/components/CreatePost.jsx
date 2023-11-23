@@ -35,9 +35,8 @@ const Createpost = () => {
       }),
     })
       .then((res) => res.json())
-      .then(console.log);
+      .then(post => addPost(post));
 
-    addPost(userId, postTitle, postBody, reactions, tags);
   };
 
   return (
