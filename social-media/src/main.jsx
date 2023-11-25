@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./routes/App.jsx";
-import Createpost from "./components/CreatePost.jsx";
+import Createpost, { createPostAction } from "./components/CreatePost.jsx";
 import  PostList, { postLoader }  from "./components/PostList.jsx";
 
 const router = createBrowserRouter([
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <PostList />, loader : postLoader },
-      { path: "/create-post", element: <Createpost /> },
+      { path: "/create-post", element: <Createpost />,action: createPostAction },
     ],
   },
 ]);
