@@ -1,10 +1,7 @@
-import { Form } from "react-router-dom";
-
+import { Form, redirect } from "react-router-dom";
 
 const Createpost = () => {
   // const { addPost } = useContext(PostList);
-
-
 
   return (
     <Form className="create-post" method="POST">
@@ -80,22 +77,21 @@ const Createpost = () => {
   );
 };
 
-export const createPostAction =()=>{
+export async function createPostAction(data) {
+  const formData = await data.request.formData();
+  const postData = Object.fromEntries(formData)
+  postData.tags = postData.tags.split(" ");
+  console.log(postData);
+
   fetch("https://dummyjson.com/posts/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      title: postTitle,
-      body: postBody,
-      reactions: reactions,
-      userId: userId,
-      tags: tags,
-    }),
+    body: JSON.stringify(postData),
   })
     .then((res) => res.json())
     .then((post) => {
-      addPost(post);
-      navigate("/");
+      console.log(post);
     });
+  return redirect("/");
 }
 export default Createpost;
